@@ -1,0 +1,27 @@
+﻿@model MekinaWebsite.Models.CarsList
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center" style="margin-top:50px;"><h4>Are you sure to delete this product?</h4></div>
+<form action="/cars/delete/@Model.CarId" method="post">
+    <table class="table" style="margin-top:50px;margin-bottom:100px;">
+          <thead class="thead-dark">
+                  <tr>
+      <th scope="col">Car Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>@Model.CarName</td>
+      <td>@Model.Price</td>
+      <td><button type="submit" class="btn btn-danger">Delete</button></td>
+    </tr>
+    </tbody>        
+    </table>
+</form>
+
+

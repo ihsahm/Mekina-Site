@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+
+<div style="position:relative">
+    <div class="container text-black">
+        <div class="row">
+                        <div class="card-body">
+                            @foreach (var cars in ViewBag.filteredCars)
+                            {
+                                <a href="~/cars/details/@cars.CarId" style="text-decoration:none;">
+                                    <div class="row jumbotron border" style="margin-top:16px;">
+                                        <div class="col-4">
+                                            <img class="rounded-3 float-end" style="height:300px; width:300px;" src="@cars.CarImage" />
+                                        </div>
+                                        <div class="col-8">
+                                            <div>
+                                                <h4 class="display-6 mb-4 text-black" style="text-decoration:none;">Name: @cars.CarName</h4>
+                                            </div>
+                                            <div >
+                                                <h4 class="display-6 mb-4 text-black" style="text-decoration:none;">Year: @cars.CarYear</h4>
+                                            </div>
+                                            <div>
+                                                <h4 class="display-6 mb-4 text-black" style="text-decoration:none;">Transmission: @cars.Transmission</h4>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                    </div>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+

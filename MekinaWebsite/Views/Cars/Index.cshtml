@@ -1,0 +1,35 @@
+﻿@model List<MekinaWebsite.Models.CarsList>
+
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+	<div class="row">
+		@foreach (var item in Model)
+		{
+			<div class="card mb-3 shadow-lg p-3 mb-5 bg-white"  style="width:300px; margin-left:15px; ">
+				<a href="/cars/details/@item.CarId" class="itemCard" style="text-decoration:none;">
+					<img class="card-img-top" src="@item.CarImage" alt="Car Image" style="height:200px;width:100%">
+					<div class="card-body">
+						<p class="card-text" style="font-weight:bold">@item.CarName</p>
+						<p class="card-text">@item.Price Br</p>
+						<p class="card-text">@item.Transmission</p>
+					</div>
+				</a>
+				@if(SignInManager.IsSignedIn(User)){
+					<a href="/cars/book/@item.CarId" class="btn btn-primary">Book this car</a> 
+					
+				}
+				@if(SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+				{
+					
+				<a href="/cars/edit/@item.CarId" class="btn btn-primary  mt-1">Update</a>                
+				<a href="/cars/delete/@item.CarId" class="btn btn-danger" style="margin-top:3px;">Delete</a>
+				}
+			</div>
+		}
+	</div>
+</div>

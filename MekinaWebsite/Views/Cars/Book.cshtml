@@ -1,0 +1,44 @@
+﻿@model BookingModel
+
+@{
+    ViewData["Title"] = "Book";
+}
+
+
+<div class="card bg-light border" style="height:500px;">
+<article class="card-body mx-auto" style="max-width: 400px;margin-top:50px;">
+	<h4 class="card-title mt-3 text-center">Book an appointment date to see a car</h4>
+    <form method="post"  action="/cars/book/@Model.BookedCarId">
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"></span>
+				</div>				
+				<input asp-for="BookedCarName" class="form-control" disabled value="@Model.BookedCarName" placeholder="@Model.BookedCarName"  />
+			</div>
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"></span>
+				</div>
+				<input asp-for="BookerName" class="form-control" placeholder="Your full name"/>
+			</div>
+			<div class="form-group input-group">
+				<div class="input-group-prepend">
+					<span class="input-group-text"></span>
+				</div>
+				<input asp-for="PhoneNumber" class="form-control" placeholder="Phone Number"/>
+			</div>
+    <div class="form-group input-group">
+				<div class="form-group input-group">
+					<div class="input-group-prepend">
+						<span class="input-group-text"> </span>
+					</div>
+					<input type="date" class="form-control" id="BookedDate" name="BookedDate" placeholder="Booked date">
+				</div>
+	</div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" style="width:100%"> Book this car  </button>
+    </div>   
+</form>
+
+</article>
+</div>

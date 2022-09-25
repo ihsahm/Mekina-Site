@@ -1,0 +1,103 @@
+﻿@inject SignInManager<IdentityUser> signInManager;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm bg-info navbar-dark bg-dark">
+ 
+        <a class="navbar-brand" style="font-weight:bold" href="#">Mekina</a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+                    <a class="nav-link" href="/home/index">Home</a>
+                </li>
+       <li class="nav-item">
+                    <a class="nav-link" href="/cars/index">Cars</a>
+                </li>
+                @if(SignInManager.IsSignedIn(User) && User.IsInRole("Admin")){
+                <li class="nav-item">
+                    <a class="nav-link" href="/cars/create">Create</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="/cars/booklist">Bookings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/listroles">Roles</a>
+                </li>    
+                
+                }
+                    <li class="nav-item">
+                    <a class="nav-link" href="/Login/Register">Register</a>
+                </li>
+                
+                
+    </ul>
+    
+@using (Html.BeginForm("Search", "Cars", FormMethod.Get))
+                    {
+                        <div class="row">
+                            <div class="col-8">
+                                <input name="searchString"
+                                       type="search"
+                                       class="form-control rounded input-group-sm m-lg-2"
+                                       placeholder="Search for a car"
+                                       aria-label="Search"
+                                       aria-describedby="search-addon" />
+                            </div>
+                            <div class="col">
+                                <button class="btn  btn-outline-success mt-2" type="submit" value="search">Search</button>
+                            </div>
+                        </div>
+                    }
+                          
+          @if(signInManager.IsSignedIn(User)){
+                    <form method="post" asp-action="logout" asp-controller="login">
+                    <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">Logout @User.Identity.Name</button>    
+                    </form>  
+                }
+                else
+                {
+    
+    <a class="nav-link" href="/Login/Login"  style="text-decoration:none;color:white;font-weight:bold;">Login</a>
+                }
+</div>
+
+</nav>
+            @RenderBody()
+            @RenderSection("name", required:false)
+    <footer class="bg-dark text-center text-lg-start text-white" >
+  <div class="container p-4" +>
+    <div class="row">
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-white">About Us</h5>
+        <p class="text-white">
+          We are an online car listing company based in Addis Ababa, Ethiopia.
+          Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam voluptatem veniam,
+          est atque cumque eum delectus sint!
+        </p>
+      </div>
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase text-white">Privacy</h5>
+         <p class="text-white">
+          All of the cars posted here are by the owners of the car.
+          Fugiat pariatur maxime quis culpa corporis vitae repudiandae aliquam voluptatem veniam,
+          est atque cumque eum delectus sint!
+        </p>
+        </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    &copy; 2022 Copyright:
+    <a class="text-white" href="#">Mekina.com</a>
+  </div>
+  </footer>
+</body>
+
+</html>

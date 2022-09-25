@@ -1,0 +1,32 @@
+﻿@model List<MekinaWebsite.Models.BookingModel>
+
+@{
+    ViewData["Title"] = "BookList";
+}
+<div class="text-center" style="margin-top:50px;">    
+<h4>List of bookings</h4>
+</div>
+
+    <table class="table" style="margin-top:50px;margin-bottom:100px;">
+          <thead class="thead-dark">
+     <tr>
+      <th scope="col">Booked Car Name</th>
+      <th scope="col">Date of appointment</th>
+      <th scope="col">Booker name</th>
+      <th scope="col">Booker phone number</th>
+    </tr>
+  </thead>
+@foreach (var item in Model)
+		{
+
+  <tbody>
+    <tr>
+      <td>@item.BookedCarName</td>
+      <td>@item.BookedDate</td>
+      <td>@item.BookerName</td>
+      <td>@item.PhoneNumber</td>
+    </tr>
+    </tbody>
+        }
+        
+    </table>
