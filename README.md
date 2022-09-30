@@ -1,6 +1,6 @@
 # Mekina-Site
 
-A car listing site in which users can buy or sell cars.
+A car listing site in which users can view cars that are available for buying.
 
 
 ## Description
